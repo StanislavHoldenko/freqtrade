@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from pandas import DataFrame
 
-from freqtrade.constants import DEFAULT_TRADES_COLUMNS
+from freqtrade.constants import DEFAULT_TRADES_COLUMNS, DEFAULT_DATAFRAME_COLUMNS_12
 from freqtrade.enums import CandleType
 from freqtrade.misc import chunks
 from freqtrade.util.datetime_helpers import dt_from_ts, dt_now
@@ -281,8 +281,8 @@ async def get_daily_ohlcv(
 
                             df = pd.read_csv(
                                 csvf,
-                                usecols=[0, 1, 2, 3, 4, 5],
-                                names=["date", "open", "high", "low", "close", "volume"],
+                                usecols=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                                names=DEFAULT_DATAFRAME_COLUMNS_12,
                                 header=header,
                             )
                             df["date"] = pd.to_datetime(

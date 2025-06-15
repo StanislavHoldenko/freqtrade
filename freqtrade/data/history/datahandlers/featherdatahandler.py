@@ -3,7 +3,7 @@ import logging
 from pandas import DataFrame, read_feather, to_datetime
 
 from freqtrade.configuration import TimeRange
-from freqtrade.constants import DEFAULT_DATAFRAME_COLUMNS, DEFAULT_TRADES_COLUMNS
+from freqtrade.constants import DEFAULT_DATAFRAME_COLUMNS_12, DEFAULT_TRADES_COLUMNS
 from freqtrade.enums import CandleType, TradingMode
 
 from .idatahandler import IDataHandler
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 class FeatherDataHandler(IDataHandler):
-    _columns = DEFAULT_DATAFRAME_COLUMNS
+    _columns = DEFAULT_DATAFRAME_COLUMNS_12
 
     def ohlcv_store(
         self, pair: str, timeframe: str, data: DataFrame, candle_type: CandleType
