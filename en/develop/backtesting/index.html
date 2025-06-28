@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../images/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1685,29 +1685,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../edge/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Edge Positioning
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2080,6 +2057,7 @@
 <p>This page explains how to validate your strategy performance by using Backtesting.</p>
 <p>Backtesting requires historic data to be available.
 To learn how to get data for the pairs and exchange you're interested in, head over to the <a href="../data-download/">Data Downloading</a> section of the documentation.</p>
+<p>Backtesting is also available in <a href="../freq-ui/#backtesting">webserver mode</a>, which allows you to run backtests via the web interface.</p>
 <h2 id="backtesting-command-reference">Backtesting command reference<a class="headerlink" href="#backtesting-command-reference" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>usage: freqtrade backtesting [-h] [-v] [--no-color] [--logfile FILE] [-V]
                              [-c PATH] [-d PATH] [--userdir PATH] [-s NAME]
@@ -2099,7 +2077,7 @@ To learn how to get data for the pairs and exchange you're interested in, head o
                              [--export-filename PATH]
                              [--breakdown {day,week,month,year} [{day,week,month,year} ...]]
                              [--cache {none,day,week,month}]
-                             [--freqai-backtest-live-models]
+                             [--freqai-backtest-live-models] [--notes TEXT]
 
 options:
   -h, --help            show this help message and exit
@@ -2155,6 +2133,7 @@ options:
                         age (default: day).
   --freqai-backtest-live-models
                         Run backtest with ready models.
+  --notes TEXT          Add notes to the backtest results.
 
 Common arguments:
   -v, --verbose         Verbose mode (-vv for more, -vvv to get all messages).
@@ -2524,6 +2503,9 @@ In this instance, please use <code>--cache none</code> once to force a fresh bac
 <h3 id="further-backtest-result-analysis">Further backtest-result analysis<a class="headerlink" href="#further-backtest-result-analysis" title="Permanent link">&para;</a></h3>
 <p>To further analyze your backtest results, freqtrade will export the trades to file by default.
 You can then load the trades to perform further analysis as shown in the <a href="../strategy_analysis_example/#load-backtest-results-to-pandas-dataframe">data analysis</a> backtesting section.</p>
+<p>Also, you can use freqtrade in <a href="../freq-ui/#backtesting">webserver mode</a> to visualize the backtest results in a web interface.
+This mode also allows you to load existing backtest results, so you can analyze them without running the backtest again.<br />
+For this mode - <code>--notes "&lt;notes&gt;"</code> can be used to add notes to the backtest results, which will be shown in the web interface.</p>
 <h3 id="backtest-output-file">Backtest output file<a class="headerlink" href="#backtest-output-file" title="Permanent link">&para;</a></h3>
 <p>The output file freqtrade produces is a zip file containing the following files:</p>
 <ul>
@@ -2807,14 +2789,12 @@ Your next step is to learn <a href="../hyperopt/">how to find optimal parameters
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "search.share", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "search.share", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="../javascripts/config.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

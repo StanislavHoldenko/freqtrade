@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../images/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1904,29 +1904,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../edge/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Edge Positioning
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2560,6 +2537,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
                           [--random-state INT] [--min-trades INT]
                           [--hyperopt-loss NAME] [--disable-param-export]
                           [--ignore-missing-spaces] [--analyze-per-epoch]
+                          [--early-stop INT]
 
 options:
   -h, --help            show this help message and exit
@@ -2631,6 +2609,8 @@ options:
                         Suppress errors for any requested Hyperopt spaces that
                         do not contain any parameters.
   --analyze-per-epoch   Run populate_indicators once per epoch.
+  --early-stop INT      Early stop hyperopt if no improvement after (default:
+                        0) epochs.
 
 Common arguments:
   -v, --verbose         Verbose mode (-vv for more, -vvv to get all messages).
@@ -3061,7 +3041,8 @@ Because hyperopt tries a lot of combinations to find the best parameters it will
 <div class="highlight"><pre><span></span><code>freqtrade<span class="w"> </span>hyperopt<span class="w"> </span>--config<span class="w"> </span>config.json<span class="w"> </span>--hyperopt-loss<span class="w"> </span>&lt;hyperoptlossname&gt;<span class="w"> </span>--strategy<span class="w"> </span>&lt;strategyname&gt;<span class="w"> </span>-e<span class="w"> </span><span class="m">500</span><span class="w"> </span>--spaces<span class="w"> </span>all
 </code></pre></div>
 <p>The <code>-e</code> option will set how many evaluations hyperopt will do. Since hyperopt uses Bayesian search, running too many epochs at once may not produce greater results. Experience has shown that best results are usually not improving much after 500-1000 epochs.<br />
-Doing multiple runs (executions) with a few 1000 epochs and different random state will most likely produce different results.</p>
+The <code>--early-stop</code> option will set after how many epochs with no improvements hyperopt will stop. A good value is 20-30% of the total epochs. Any value greater than 0 and lower than 20 it will be replaced by 20. Early stop is by default disabled (<code>--early-stop=0</code>)</p>
+<p>Doing multiple runs (executions) with a few 1000 epochs and different random state will most likely produce different results.</p>
 <p>The <code>--spaces all</code> option determines that all possible parameters should be optimized. Possibilities are listed below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3093,7 +3074,7 @@ Or maybe you just want to optimize your stoploss or roi table for that awesome n
 <li><code>trailing</code>: search for the best trailing stop values</li>
 <li><code>trades</code>: search for the best max open trades values</li>
 <li><code>protection</code>: search for the best protection parameters (read the <a href="#optimizing-protections">protections section</a> on how to properly define these)</li>
-<li><code>default</code>: <code>all</code> except <code>trailing</code> and <code>protection</code></li>
+<li><code>default</code>: <code>all</code> except <code>trailing</code>, <code>trades</code> and <code>protection</code></li>
 <li>space-separated list of any of the above values for example <code>--spaces roi stoploss</code></li>
 </ul>
 <p>The default Hyperopt Search Space, used when no <code>--space</code> command line option is specified, does not include the <code>trailing</code> hyperspace. We recommend you to run optimization for the <code>trailing</code> hyperspace separately, when the best parameters for other hyperspaces were found, validated and pasted into your custom strategy.</p>
@@ -3480,14 +3461,12 @@ It is recommended to use the <code>logging</code> module instead.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "search.share", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "search.share", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="../javascripts/config.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
